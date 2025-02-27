@@ -1,0 +1,38 @@
+{% extends 'covidapp/base.html' %}
+{% load static %}
+
+{% block title %}Generate Plots{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Generate Plots</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="country">Select Country:</label>
+        <select name="country" id="country">
+            <option value="" disabled selected>Select a country</option>
+            {% for country in countries %}
+                <option value="{{ country }}">{{ country }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="data_type">Select Data Type:</label>
+        <select name="data_type" id="data_type">
+            <option value="total_cases">Total Cases</option>
+            <option value="total_deaths">Total Deaths</option>
+            <option value="people_vaccinated">People Vaccinated</option>
+        </select>
+
+        <button type="submit">Generate Plot</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if plot_path %}
+        <h2>Generated Plot</h2>
+        <img src="{% static plot_path %}" alt="Country Plot">
+    {% endif %}
+</main>
+{% endblock %}

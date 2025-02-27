@@ -1,0 +1,32 @@
+{% extends 'covidapp/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ _("COVID-19 Dashboard") }}{% endblock %}
+
+{% block content %}
+    <div id="language-switcher">
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <label for="language-select">{% trans "Choose Language" %}</label>
+            <select name="language" id="language-select">
+                {% get_current_language as current_language %}
+                {% get_available_languages as available_languages %}
+                {% for lang_code, lang_name in available_languages %}
+                    <option value="{{ lang_code }}" {% if lang_code == current_language %}selected{% endif %}>
+                        {{ lang_name }}
+                    </option>
+                {% endfor %}
+            </select>
+            <button type="submit">{% trans "Switch" %}</button>
+        </form>
+    </div>
+
+    <!-- Content -->
+    <h1 id="covid-evolution">{% trans "COVID-19 Evolution in Romania" %}</h1>
+    <p>{{ insights }}</p>
+    <img src="{% static 'covidapp/covid_plot.png' %}" alt="{% trans 'COVID-19 Plot' %}">
+
+    <h2 id="vaccination-progress">{% trans "Vaccination Progress in Romania" %}</h2>
+    <img src="{% static 'covidapp/vaccination_plot.png' %}" alt="{% trans 'Vaccination Plot' %}">
+{% endblock %}

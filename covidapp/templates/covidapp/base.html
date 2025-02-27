@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}COVID App{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'covidapp/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'home' %}">COVID-19 Evolution</a></li>
+            <li><a href="{% url 'create_account' %}">Create Account</a></li>
+            <li><a href="{% url 'decrypt_message' %}">Decrypt Message</a></li>
+            <li><a href="{% url 'generate_plots' %}">Generate Plots</a></li>
+            <li><a href="{% url 'predictions' %}">Predictions</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
