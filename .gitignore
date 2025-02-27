@@ -1,0 +1,77 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+env/
+
+# Dependency files
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.installed.cfg
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Django-specific files
+*.db
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static/admin/
+
+# Ignore all automatically generated plots in static/covidapp/
+covidapp/static/covidapp/*.png
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Ignore VS Code & JetBrains (PyCharm) settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Ignore macOS system files
+.DS_Store
+
+# Logs and temp files
+*.log
+*.tmp
+*.pid
+*.lock
+
+# Ignore compiled translation files (.mo)
+*.mo
+
+# Ignore generated encryption keys & environment variables
+.env
+fernet_key.key
+
+# Ignore CSV dataset file
+owid-covid-data.csv
+
+# Ignore Django migrations
+covidapp/migrations/*.py
+!covidapp/migrations/__init__.py
